@@ -11,3 +11,7 @@ This is a known issue that Microsoft has not yet resolved.
 
 - Heavily refactored the codebase by condensing logic into functions, resulting in a cleaner script and making it more extensible and maintainable.
 - Created dedicated functions for data collection using `Invoke-MgGraphRequest` to ensure compatibility, as I'm personally using the Entra module.
+
+# ToDo
+The script that Sean wrote was extensive and impressive so it took a while to go through it all.
+I may have some functions I'm not using here while I was conceptualizing how to change it.
