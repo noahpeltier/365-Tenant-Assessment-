@@ -232,3 +232,9 @@ Start-Process $ConsentURl
 Write-Host "The below details can be used to run the assessment, take note of them and press any button to clear the window.`nTenant ID: $($context.TenantID)`nClient ID: $($appReg.appID)`nCertificate Thumbprint: $thumbprint" -ForegroundColor Green
 Pause
 clear
+
+$global:ConnectionParams = @{
+    tenantid = $context.TenantID
+    clientid = $appReg.appID
+    certificateThumbprint = $thumbprint
+}
