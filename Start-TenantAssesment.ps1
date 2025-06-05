@@ -462,15 +462,16 @@ function Get-UserMailboxStats {
 
 function Get-ArchiveMailboxStats {
     $ArchiveStats = [system.Collections.Generic.List[Object]]::new()
+    $i = 1
     foreach ($archive in $Script:ArchiveMailboxes) {
-        Update-Progress -ProgressStatus "Getting archive mailbox statistics $i of $($ArchiveMailboxes.count)..."
+        Update-Progress -ProgressStatus "Getting archive mailbox statistics $i of $($Script:ArchiveMailboxes.count)..."
         $i++
 
-        $stats = get-EXOmailboxstatistics $archive.PrimarySmtpAddress -Archive #-erroraction SilentlyContinue
+        $stats = Get-EXOMailboxStatistics $archive.PrimarySmtpAddress -Archive #-erroraction SilentlyContinue
         $stats | Add-Member -MemberType NoteProperty -Name ObjectID -Value $archive.ExternalDirectoryObjectId -Force
-        $stats | Add-Member -MemberType NoteProperty -Name Primarysmtpaddress -Value $archive.primarysmtpaddress -Force
+        $stats | Add-Member -MemberType NoteProperty -Name PrimarySmtpAddress -Value $archive.PrimarySmtpAddress -Force
         $ArchiveStats.Add($stats)
-        
+
     }
     $ArchiveStats
 }
